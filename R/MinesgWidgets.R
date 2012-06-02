@@ -33,8 +33,7 @@
 ##        you don't explode on your first click and you don't
 ##        get a penalty.
 
-require(gWidgetsRGtk2)
-options(guiToolkit = "RGtk2")
+
 
 #' A quick way to play Mines.
 #' 
@@ -80,7 +79,8 @@ mines <- function(size = "small"){
 #' @author Dason Kurkiewicz \email{dasonk@@iastate.edu}
 #' @export
 mines.custom <- function(n.row = 9, n.col = 9, n.mines = 16){
-	
+    options(guiToolkit = "RGtk2")
+    
 	## CONSTANTS
 	##
 	## The size of each widget - we want all buttons
