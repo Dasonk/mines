@@ -1,0 +1,16 @@
+Package: Mines
+Type: Package
+Title: A Minesweeper Clone for R
+Version: 0.1.0
+Date: 2012-06-02
+Author: Dason Kurkiewicz
+Maintainer: Dason Kurkiewicz <dasonk@iastate.edu>
+Depends:
+    R (>= 2.13.0),
+    gWidgetsRGtk2
+Suggests:
+    XML
+Description: Want to play Mines?  Hell yes you do.
+License: GPL-2
+Collate:
+    'MinesgWidgets.R'
