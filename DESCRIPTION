@@ -1,4 +1,4 @@
-Package: Mines
+Package: mines
 Type: Package
 Title: A Minesweeper Clone for R
 Version: 0.1.0
@@ -12,6 +12,7 @@ Suggests:
     XML
 Description: Want to play Mines?  Hell yes you do.
 License: GPL-2
+url: \url{https://github.com/Dasonk/mines}
 Collate:
     'mines.R'
     'mines_custom.R'
