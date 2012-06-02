@@ -9,7 +9,7 @@ Depends:
     R (>= 2.13.0),
     gWidgetsRGtk2
 Suggests:
-    XML
+    fun
 Description: Want to play Mines?  Hell yes you do.
 License: GPL-2
 url: \url{https://github.com/Dasonk/mines}
