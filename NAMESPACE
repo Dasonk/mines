@@ -1,2 +1,2 @@
 export(mines)
-export(mines.custom)
+export(mines_custom)
