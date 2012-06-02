@@ -13,4 +13,5 @@ Suggests:
 Description: Want to play Mines?  Hell yes you do.
 License: GPL-2
 Collate:
-    'MinesgWidgets.R'
+    'mines.R'
+    'mines_custom.R'
