@@ -1,12 +1,13 @@
-
 #' A quick way to play Mines.
 #' 
-#' This is an easier way to plays Mines.  Instead of using mines.custom to create the size
-#' of the board you want and to specify how many mines.  This allows you to use a few presets.
+#' This is an easier way to plays Mines.  Instead of 
+#' using mines.custom to create the size of the board 
+#' you want and to specify how many mines.  This allows 
+#' you to use a few presets.
 #' 
-#' @param size The size of the minefield.  Can be either "small" "medium" or "large".
-#' Only the first letter matters.
-#' @return Returns nothing but creates a game.
+#' @aliases mines
+#' @param size The size of the minefield.  Can be either 
+#' "small" "medium" or "large". Only the first letter matters.
 #' @author Dason Kurkiewicz \email{dasonk@@iastate.edu}
 #' @export
 mines <- function(size = "small"){
@@ -29,3 +30,4 @@ mines <- function(size = "small"){
     }
     mines_custom(n, m, n.mines)
 }
+

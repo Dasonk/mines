@@ -47,7 +47,6 @@ mines_custom <- function(n.row = 9, n.col = 9, n.mines = 16){
     flagcount <- 0
     
     
-    
     ## Create Game Menu
     menulist <- list()
     menulist$Game$New$handler = function(h, ...){
@@ -83,13 +82,11 @@ mines_custom <- function(n.row = 9, n.col = 9, n.mines = 16){
                  icon = "info")
     }
     
-    
     ## Actually start the gui
     win <- gwindow("Mines", width = 200, height = 200)
     
     ## Add the menu
     menu <- gmenu(menulist, cont = win)
-    
     
     biggroup <- ggroup(hor = TRUE, cont = win)
     addSpring(biggroup)
@@ -113,7 +110,7 @@ mines_custom <- function(n.row = 9, n.col = 9, n.mines = 16){
     
     ## A function to generate a map with mines in it
     generate.map <- function(n, m, n.mines){
-        map <- matrix(F, nrow = n, ncol = m)
+        map <- matrix(FALSE, nrow = n, ncol = m)
         mines <- sample(1:(n*m), n.mines)
         map[mines] <- TRUE
         return(map)
@@ -123,7 +120,7 @@ mines_custom <- function(n.row = 9, n.col = 9, n.mines = 16){
     map <- generate.map(n.row, n.col, n.mines)
     
     ## Tells us which cells the player has explored
-    playertable <- matrix(F, nrow =n.row, ncol = n.col)
+    playertable <- matrix(FALSE, nrow =n.row, ncol = n.col)
     
     ## Let Inf represent a location that is a mine
     ## This function tells you how many mines are
@@ -157,7 +154,7 @@ mines_custom <- function(n.row = 9, n.col = 9, n.mines = 16){
         
         ## Return the number of mines in surrounding areas
         return(sum(mine))
-    } ## end of get.nums #####################################
+    } 
     
     ## Given an input (from get.nums) what color
     ## should we give a spot with input number of
@@ -198,7 +195,6 @@ mines_custom <- function(n.row = 9, n.col = 9, n.mines = 16){
         return(ans)
     }
     
-    
     ## This function will block any handlers from
     ## receiving any input.
     blockhandlers <- function(){
@@ -228,28 +224,14 @@ mines_custom <- function(n.row = 9, n.col = 9, n.mines = 16){
     gameover <- function(){
         if(playing){
             playing <<- FALSE
-            ## If we want to display all the mines
-            ## Takes a while on big boards
-            ## for(i in 1:n.row){
-            ##     for(j in 1:n.col){
-            ##         if(map[i,j]){
-            ##             guess(i, j)
-            ##         }
-            ##     }
-            ## }
             losemessage <- "You lost - Don't explode yourself next time."
             newgameorquit(losemessage)
         }
-        ## Stops the timer
-        #playing <<- FALSE
-        
-        
-        
-        
     }
     
     ## Check if we won the game
     checkwin <- function(){
+        ## TODO: Change to using any
         val <- sum((map - (!playertable))^2)
         if(val == 0){
             gamewin()
@@ -265,17 +247,6 @@ mines_custom <- function(n.row = 9, n.col = 9, n.mines = 16){
         
         ## Figure out how long it took to win.
         endtime <- svalue(timerlabel)
-        
-        ## Create a fancy way of getting rid of the buttons.
-        #grid <- expand.grid(1:n.row,1:n.col)
-        #ord <- sample(1:(n.row*n.col))
-        #slp <- FANCYWINTIME/(n.row*n.col)
-        #for(idx in ord){
-        #	i <- grid[idx, 1]
-        #	j <- grid[idx, 2]
-        #	visible(layout[[i]][[j]]$group) <- FALSE
-        #	Sys.sleep(slp)
-        #}
         
         ## Display a message and tell the user how long it took.
         winmessage <- paste("You Won!\n", endtime, "seconds.")
@@ -406,19 +377,7 @@ mines_custom <- function(n.row = 9, n.col = 9, n.mines = 16){
             }
         }
         
-        
         buttonlchand(list(obj = layout[[i]][[j]]$button))
-        #guess(i, j)
-        
-        ## Only click that spot - don't use guess because if we click
-        ## an empty spot we don't want it to automatically expand...
-        ## They can do that themselves since they got a hint...
-        ## playertable[i, j] <<- TRUE
-        ## delete(layout[[i]][[j]]$group, layout[[i]][[j]]$button)
-        ## add(layout[[i]][[j]]$group, layout[[i]][[j]]$label)
-        ## But it's possible somebody uses a hint for the last spot
-        ## So check if they won or not...
-        ## checkwin()
     }
     
     ## Resets the board
@@ -439,7 +398,6 @@ mines_custom <- function(n.row = 9, n.col = 9, n.mines = 16){
                         switchflag(list(obj = layout[[i]][[j]]$button))
                     }
                 }
-                #visible(layout[[i]][[j]]$group) <- TRUE
             }
         }
         
@@ -455,7 +413,6 @@ mines_custom <- function(n.row = 9, n.col = 9, n.mines = 16){
             }
         }
         svalue(timerlabel) <- paste("Time: 0")
-        
     }
     
     newgame <- function(size){
@@ -505,7 +462,6 @@ mines_custom <- function(n.row = 9, n.col = 9, n.mines = 16){
     ## surrounding cells if the number of flags
     ## is met...
     
-    
     flaglabel <- glabel()
     updateflaglabel()
     add(topgroup, flaglabel)
@@ -544,7 +500,6 @@ mines_custom <- function(n.row = 9, n.col = 9, n.mines = 16){
             layout[[i]][[j]] <- list()
             
             ## Make the group
-            #layout[[i]][[j]]$group <- ggroup(spacing = 0, cont = rowgroups[[i]])
             layout[[i]][[j]]$group <- ggroup(spacing = 0)
             svalue(layout[[i]][[j]]$group) <- 0
             add(rowgroups[[i]], layout[[i]][[j]]$group)
@@ -567,10 +522,7 @@ mines_custom <- function(n.row = 9, n.col = 9, n.mines = 16){
             add(layout[[i]][[j]]$group, layout[[i]][[j]]$button)
         }
     }
-    
     add(smallgroup, gg)
-    
     ## For debugging - Also for cheating.
     ##print(map)
-    
 }
